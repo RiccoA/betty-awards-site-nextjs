@@ -1,4 +1,4 @@
-export default function Home() {
+export default function HomePage() {
   return (
     <main>
       <div>Next.js on Railway</div>
