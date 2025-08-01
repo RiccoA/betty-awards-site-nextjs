@@ -6,15 +6,26 @@
     "start": "next start"
   },
   "dependencies": {
+    "dotenv": "^17.2.1",
+    "drizzle-orm": "^0.44.4",
+    "next": "15.2.0",
+    "pg": "^8.16.3",
     "react": "19.1.1",
-    "react-dom": "19.1.1",
-    "next": "15.2.0"
+    "react-dom": "19.1.1"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
+    "@types/pg": "^8.15.5",
     "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "drizzle-kit": "^0.31.4",
+    "tsx": "^4.20.3",
+    "typescript": "^5"
   },
-  "packageManager": "pnpm@10.6.2+sha1.7f417eb782bab712a1a9bd0206887dcee502d03e"
+  "packageManager": "pnpm@10.6.2+sha1.7f417eb782bab712a1a9bd0206887dcee502d03e",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
 }
