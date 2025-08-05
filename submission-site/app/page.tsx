@@ -1,7 +1,7 @@
 export default function HomePage() {
   return (
     <main>
-      <div>Next.js on Railway</div>
+      <div>Submission site</div>
     </main>
   );
 }
