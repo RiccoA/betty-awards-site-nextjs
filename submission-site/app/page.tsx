@@ -32,7 +32,7 @@ export default function HomePage() {
           <div className="flex justify-center mt-8">
             <div className="max-w-2xl rounded-md shadow">
               <a href="/submission"
-                className="flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-pink-600 border border-transparent rounded-md hover:bg-pink-700 md:py-4 md:text-lg md:px-10">
+                className="flex items-center justify-center px-8 py-3 text-base font-medium !text-white bg-pink-600 border border-transparent rounded-md hover:bg-pink-700 md:py-4 md:text-lg md:px-10">
                 Submit Story
               </a>
             </div>
