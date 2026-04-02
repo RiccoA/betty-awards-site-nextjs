@@ -1,4 +1,6 @@
 export default function SubmissionPage() {
+    // use env variable to determine if submission is enabled
+    const submitEnabled = process.env.SUBMIT_ENABLED === "true";
   return (
     <main className="container w-full pt-10 px-4 mx-auto mb-10 md:max-w-3xl">
         <div className="error-message bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-4 hidden" role="alert">
@@ -7,6 +9,8 @@ export default function SubmissionPage() {
         </div>
 
         <h1 className="text-4xl mb-3">Submit Story For Summer 2026</h1>
+
+        {submitEnabled && <p>Submission is Enabled </p>}
         <div className="mt-4 mb-4 p-4 bg-gray-100">
             <h2 className="mb-1 ">
                 Submission is currently paused for maintenance. Please come back in a few days to submit your story. 
