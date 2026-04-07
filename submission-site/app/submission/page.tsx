@@ -6,7 +6,7 @@ export default function SubmissionPage() {
 
     async function submitStory(formData: FormData) {
         'use server'
-
+        console.log("Form data received:", Object.fromEntries(formData.entries()));
         const submission = {
             AuthorsName: formData.get("authorsname") as string,
             AuthorsAge: parseInt(formData.get("authorsage") as string),
@@ -21,7 +21,11 @@ export default function SubmissionPage() {
             ReceiptID: "124"
         };
 
+        console.log("Received submission:", submission);
+
         await putSubmission(submission);
+
+
     }
 
   return (
@@ -95,8 +99,8 @@ export default function SubmissionPage() {
         </label>
 
         <div className="mb-2">
-            <input id="disclosure1" type="checkbox" required />
-            <label className="mb-2" htmlFor="disclosure1">
+            <input id="permission-disclosure" type="checkbox" required />
+            <label className="mb-2" htmlFor="permission-disclosure">
                 I verify that the above-named child has my
                 permission to enter this contest.
                 <span aria-hidden="true" className="required text-red-600">*</span>
@@ -104,8 +108,8 @@ export default function SubmissionPage() {
         </div>
 
         <div className="mb-2">
-            <input id="disclosure2" type="checkbox" required />
-            <label className="mb-2" htmlFor="disclosure2">
+            <input id="reproduction-disclosure" type="checkbox" required />
+            <label className="mb-2" htmlFor="reproduction-disclosure">
                 I agree on behalf of my
                 child, that this website may reproduce their entry
                 without payment to the child, other than any prize(s)
@@ -115,8 +119,8 @@ export default function SubmissionPage() {
         </div>
 
         <div className="mb-2">
-            <input id="disclosure3" type="checkbox" required />
-            <label className="mb-2" htmlFor="disclosure3">
+            <input id="originality-disclosure" type="checkbox" required />
+            <label className="mb-2" htmlFor="originality-disclosure ">
                 I verify that the submitted story
                 is the original work of my child.
                 <span aria-hidden="true" className="required text-red-600">*</span>
@@ -125,8 +129,8 @@ export default function SubmissionPage() {
         </div>
 
         <div className="mb-2">
-            <input id="disclosure4" name="hasmarketingconsent" defaultChecked type="checkbox" />
-            <label className="mb-2" htmlFor="disclosure4">
+            <input id="marketing-consent" name="hasmarketingconsent" defaultChecked type="checkbox" />
+            <label className="mb-2" htmlFor="marketing-consent">
                 I would like to signup to receive email updates from The Betty Awards team.
             </label>
         </div>
@@ -136,6 +140,7 @@ export default function SubmissionPage() {
         </div>
 
         <button type="submit">Submit</button>
+
       </form>
         }
     </main>
