@@ -1,3 +1,4 @@
+import { uploadFileToS3 } from "@/data/aws/s3";
 import { putSubmission } from "../../data/aws/submissionRepo";
 import FileInput from "./FileInput";
 
@@ -8,6 +9,15 @@ export default function SubmissionPage() {
   async function submitStory(formData: FormData) {
     "use server";
     console.log("Form data received:", Object.fromEntries(formData.entries()));
+
+    //upload file to s3 and get the file key
+    const file = formData.get("file") as File;
+    // use this as the file key format 2021-12-20-105248.pdf
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const fileExtension = file.name.split(".").pop();
+    const fileKey = `${timestamp}.${fileExtension}`;
+    await uploadFileToS3(file, fileKey);
+
     const submission = {
       AuthorsName: formData.get("authorsname") as string,
       AuthorsAge: parseInt(formData.get("authorsage") as string),
@@ -16,7 +26,7 @@ export default function SubmissionPage() {
       PhoneNumber: formData.get("phonenumber") as string,
       ParentsName: formData.get("parentsname") as string,
       Country: formData.get("country") as string,
-      File: "", //formData.get("file") as string,
+      File: fileKey,
       HasMarketingConsent: formData.get("hasmarketingconsent") === "true",
       IsComplete: true,
       ReceiptID: "124",
@@ -24,7 +34,7 @@ export default function SubmissionPage() {
 
     console.log("Received submission:", submission);
 
-    //await putSubmission(submission);
+    await putSubmission(submission);
   }
 
   return (
@@ -216,7 +226,7 @@ export default function SubmissionPage() {
 
           <div className="mb-2">
             <input id="originality-disclosure" type="checkbox" required />
-            <label className="mb-2" htmlFor="originality-disclosure ">
+            <label className="mb-2" htmlFor="originality-disclosure">
               I verify that the submitted story is the original work of my
               child.
               <span aria-hidden="true" className="required text-red-600">
