@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-
 test('submission works', async ({ page }) => {
     await page.goto('/submission');
 
@@ -18,6 +17,12 @@ test('submission works', async ({ page }) => {
     await page.check('#reproduction-disclosure');
     await page.check('#originality-disclosure');
     await page.check('#marketing-consent');
+
+    // upload a file
+    const filePath = 'tests/fixtures/test_story.pdf';
+    // const filePath = resolve(__dirname, 'fixtures/test_story.pdf');
+    await page.setInputFiles('input[type="file"]', filePath);
+
     await page.click('button[type="submit"]');
-    await page.waitForTimeout(5000); // wait for 1 second to ensure all interactions are processed
+    await page.waitForTimeout(5000); // wait for 5 second to ensure all interactions are processed
 });
