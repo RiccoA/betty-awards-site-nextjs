@@ -1,13 +1,15 @@
 "use server";
 import { uploadFileToS3 } from "@/data/aws/s3";
 import { putSubmission } from "@/data/aws/submissionRepo";
+import { sendAdminEmail } from "@/data/email";
 
 export async function submitStory(formData: FormData) {
   console.log("Form data received:", Object.fromEntries(formData.entries()));
-
   //upload file to s3 and get the file key
+
   const file = formData.get("file") as File;
   // use this as the file key format 2021-12-20-105248.pdf
+
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const fileExtension = file.name.split(".").pop();
   const fileKey = `${timestamp}.${fileExtension}`;
@@ -30,4 +32,8 @@ export async function submitStory(formData: FormData) {
   console.log("Received submission:", submission);
 
   await putSubmission(submission);
+
+  await sendAdminEmail(submission);
+
+  console.log("Admin email sent successfully");
 }

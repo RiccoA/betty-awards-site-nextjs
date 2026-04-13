@@ -1,7 +1,7 @@
 import { PutCommand } from "@aws-sdk/lib-dynamodb";
 import { docClient } from "./dynamodb";
 
-interface Submission {
+export interface Submission {
   AuthorsName: string;
   AuthorsAge: number;
   StoryTitle: string;
