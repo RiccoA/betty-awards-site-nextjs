@@ -3,11 +3,31 @@ import { useState, useRef } from "react";
 import StripePaymentForm from "./StripePaymentForm";
 import FileInput from "./FileInput";
 import { submitStory } from "../actions/submitStory";
+import { validateSubmission, type ValidationResult } from "../actions/validateSubmission";
 
 export default function SubmissionPage() {
   const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
   const paymentIntentIdRef = useRef<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const [isValidated, setIsValidated] = useState(false);
+  const [isValidating, setIsValidating] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+
+  async function handleValidate() {
+    if (!formRef.current) return;
+    setIsValidating(true);
+    setValidationErrors({});
+
+    const formData = new FormData(formRef.current);
+    const result: ValidationResult = await validateSubmission(formData);
+
+    if (result.success) {
+      setIsValidated(true);
+    } else {
+      setValidationErrors(result.errors);
+    }
+    setIsValidating(false);
+  }
 
   async function handlePaymentSuccess(id: string) {
     paymentIntentIdRef.current = id;
@@ -22,12 +42,33 @@ export default function SubmissionPage() {
     const formData = new FormData(formRef.current!);
     formData.set("paymentIntentId", paymentIntentIdRef.current);
 
-    await submitStory(formData); // your existing server action
+    await submitStory(formData);
   }
 
   return (
     <main className="container w-full pt-10 px-4 mx-auto mb-10 md:max-w-3xl">
-      <h1 className="text-4xl mb-3">Submit Story For Summer 2026</h1>
+      <h1 className="text-4xl mb-3">Story Submission for Summer 2026</h1>
+
+        <div className="mt-4 mb-4 p-4 bg-gray-100">
+            <div className="mb-8">
+                <h2 className="mb-1 text-xl font-bold uppercase">Contest Rules: </h2>
+                <ul className="leading-8 list-decimal list-inside content-rules ">
+                    <li>Entries must be typed and in English.</li>
+                    <li>Maximum story length is 1000 words.</li>
+                    <li>Entries can be fiction, non-fiction or poems.</li>
+                    <li>Kids may choose any topic, as long as it is age-appropriate.</li>
+                    <li>Contest is open to all children, worldwide, ages 8-12.</li>
+                    <li>Entries must be the original unpublished work of the child entering the contest.</li>
+                    <li>
+                        More than one entry per child is allowed. Each entry must pay the $20 fee.
+                    </li>
+                </ul>
+            </div>
+            <p className="mt-8 mb-4">
+                Find the application form below. Note that there is a $20.00 application fee for each entry.
+            </p>
+        </div>
+
 
       <form ref={formRef} onSubmit={handleSubmit}>
         <label className="block mb-4">
@@ -225,12 +266,36 @@ export default function SubmissionPage() {
         </div>
 
 
-      {!paymentIntentId ? (
+        {Object.keys(validationErrors).length > 0 && (
+          <div className="mt-4 p-3 bg-red-50 border border-red-300 rounded text-red-700">
+            <p className="font-semibold mb-1">Please fix the following errors:</p>
+            <ul className="list-disc list-inside">
+              {Object.values(validationErrors).map((msg) => (
+                <li key={msg}>{msg}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <p className="text-2xl text-right mt-4 mb-4">
+            Application Fee: $20.00
+        </p>
+
+      {paymentIntentId ? (
+        <div className="mt-4 p-3 bg-green-100 text-green-800 rounded">
+          ✓ Your story has been submitted successfully! We will review your submission and contact you via email if you are selected as a finalist. 
+        </div>
+      ) : isValidated ? (
         <StripePaymentForm onPaymentSuccess={handlePaymentSuccess} />
       ) : (
-        <div className="mt-4 p-3 bg-green-100 text-green-800 rounded">
-          ✓ Payment confirmed — submitting your entry...
-        </div>
+        <button
+          type="button"
+          onClick={handleValidate}
+          disabled={isValidating}
+          className="mt-4 px-6 py-3 bg-blue-600 text-white rounded disabled:opacity-50"
+        >
+          {isValidating ? "Checking..." : "Continue to Payment"}
+        </button>
       )}
 
       </form>
