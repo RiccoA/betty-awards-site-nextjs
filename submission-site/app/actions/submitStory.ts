@@ -1,6 +1,6 @@
 "use server";
 import { uploadFileToS3 } from "@/data/aws/s3";
-import { putSubmission } from "@/data/aws/submissionRepo";
+import { putSubmission, Submission } from "@/data/aws/submissionRepo";
 import { sendAdminEmail } from "@/data/email";
 
 export async function submitStory(formData: FormData) {
@@ -15,7 +15,7 @@ export async function submitStory(formData: FormData) {
   const fileKey = `${timestamp}.${fileExtension}`;
   await uploadFileToS3(file, fileKey);
 
-  const submission = {
+  const submission: Submission = {
     AuthorsName: formData.get("authorsname") as string,
     AuthorsAge: parseInt(formData.get("authorsage") as string),
     StoryTitle: formData.get("storytitle") as string,
@@ -24,9 +24,10 @@ export async function submitStory(formData: FormData) {
     ParentsName: formData.get("parentsname") as string,
     Country: formData.get("country") as string,
     File: fileKey,
-    HasMarketingConsent: formData.get("hasmarketingconsent") === "true",
+    HasMarketingConsent: formData.get("hasmarketingconsent") === "on",
     IsComplete: true,
-    ReceiptID: "124",
+    ReceiptID: formData.get("paymentIntentId") as string,
+    SubmissionTimeStamp: new Date().toISOString(),
   };
 
   console.log("Received submission:", submission);

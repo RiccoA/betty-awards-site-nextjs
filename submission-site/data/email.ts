@@ -37,7 +37,7 @@ export async function sendAdminEmail(submission: Submission) {
       <div>Receipt ID: ${ReceiptID}</div>
       <div>Time Stamp: ${SubmissionTimeStamp}</div>
       <div>Consented to marketing email: ${marketingConsent}</div>
-      <div>Contest Summer, 2026</div>
+      <div>Contest: Summer, 2026</div>
       <div>File: <a href="${fileUrl}">Story File</a></div>
     </div>
   `;
