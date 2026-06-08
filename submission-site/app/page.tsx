@@ -59,14 +59,14 @@ export default function HomePage() {
                     Summer 2026 Contest deadline is June 1, 2026. Winners will be announced on July 31, 2026.
                 </p>
                 <p className="text-white text-sm mb-2">
-                    Fall 2026 Contest deadline is October 3, 2026. Winners will be announced on November 1, 2026.
+                    Fall 2026 Contest deadline is October 1, 2026. Winners will be announced on November 1, 2026.
                 </p>
-                <p className="text-white text-sm mb-2">
+                {/* <p className="text-white text-sm mb-2">
                     Winter 2027 Contest deadline is January 9, 2027. Winners will be announced on March 1, 2027.
                 </p>
                 <p className="text-white text-sm mb-2">
                     Spring 2027 Contest deadline is April 3, 2027. Winners will be announced on May 29, 2027.
-                </p>
+                </p> */}
             </div>
 
 
@@ -90,27 +90,27 @@ export default function HomePage() {
           <div className="px-4 py-8 md:px-8">
               <h1 className="mb-2 text-3xl font-extrabold uppercase text-pink-600">
                   <i aria-hidden="true" className="fas fa-medal"></i>
-                  The Winter 2026 Winners Are
+                  The Spring 2026 Winners Are
                   <i aria-hidden="true" className="fas fa-medal"></i>
               </h1>
 
               <div className="py-3">
-                    <div className="font-bold">1st Place:  Finley Adamson</div>
+                    <div className="font-bold">1st Place:  Averie T., age 12</div>
                           <div className="underline text-blue-601 hover:text-blue-400 story">
-                        <a href="https://betty-awards-uploads-prod.s3.us-east-2.amazonaws.com/The+Dive%2C+Winter+2025+FIRST+PLACE.pdf" target="_blank">The Dive</a>
+                            Things We Leave Behind 
                           </div>
                       </div>
               <div className="py-3 ">
-                    <div className="font-bold">2nd Place: Charles Cheung</div>
+                    <div className="font-bold">2nd Place: Kunxi H., age 11</div>
                           <div className="underline text-blue-601 hover:text-blue-400">
-                        <a href="https://betty-awards-uploads-prod.s3.us-east-2.amazonaws.com/Whiskers+on+the+Silk+Road.pdf" target="_blank">Whiskers on the Silk Road</a>
+                            Dear Diary
                           </div>
                       </div>
 
               <div className="py-3">
-                    <div className="font-bold">3rd Place: Harley G Gallagher</div>
+                    <div className="font-bold">3rd Place:  Luna Z., age 8</div>
                           <div className="underline text-blue-601 hover:text-blue-400">
-                        <a href="https://betty-awards-uploads-prod.s3.us-east-2.amazonaws.com/Daphne+(A+Greek+Mythology+Story)+WINTER+2025+THIRD+PLACE.pdf" target="_blank">Daphne (A Greek Mythology Story)</a>
+                            The Unbreakable Himalayan Heart
                           </div>
                     </div>
             

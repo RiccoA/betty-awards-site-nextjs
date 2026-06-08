@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import StripePaymentForm from "./StripePaymentForm";
 import FileInput from "./FileInput";
+import CountrySelect from "./CountrySelect";
 import { submitStory } from "../actions/submitStory";
 import {
   validateSubmission,
@@ -248,14 +249,7 @@ export default function SubmissionPage() {
                   *
                 </span>
               </span>
-              <select
-                required
-                id="country"
-                name="country"
-                className="relative w-full px-3 py-4 text-sm bg-white  border border-gray-300  rounded shadow outline-none placeholder-bluegray-300 text-bluegray-600 focus:outline-none focus:ring"
-              >
-                <option value="United States">United States</option>
-              </select>
+              <CountrySelect />
             </label>
 
             <div className="mb-2">
