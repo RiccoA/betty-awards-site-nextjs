@@ -7,6 +7,12 @@ export default function PastWinnersPage() {
         <i aria-hidden="true" className="fas fa-medal text-pink-600"></i>
     </h1>
     <p className="mb-4">
+      <strong>Spring 2026</strong>
+        1st Place &ndash; Averie T<br />
+        2nd Place &ndash; Kunxi H.<br />
+        3rd Place &ndash; Luna Z.<br />
+    </p>
+    <p className="mb-4">
         <strong>Winter 2026</strong><br />
         1st Place &ndash; Finley Adamson<br />
         2nd Place &ndash; Charles Cheung<br />

@@ -23,10 +23,10 @@ export default function HomePage() {
                     </p>
 
           <p className="mt-2 mb-2 text-white">
-            Enter now for the Summer 2026 contest!
+            Enter now for the Fall 2026 contest!
           </p>
           <p className="mt-2 mb-2 text-white">
-            The deadline is June 1, 2026.
+            The deadline is October 1, 2026.
           </p>
 
           <div className="flex justify-center mt-8">
@@ -90,27 +90,27 @@ export default function HomePage() {
           <div className="px-4 py-8 md:px-8">
               <h1 className="mb-2 text-3xl font-extrabold uppercase text-pink-600">
                   <i aria-hidden="true" className="fas fa-medal"></i>
-                  The Spring 2026 Winners Are
+                  The Summer 2026 Winners Are
                   <i aria-hidden="true" className="fas fa-medal"></i>
               </h1>
 
               <div className="py-3">
-                    <div className="font-bold">1st Place:  Averie T., age 12</div>
+                    <div className="font-bold">1st Place:  Sahithya, age 12</div>
                           <div className="underline text-blue-601 hover:text-blue-400 story">
-                            Things We Leave Behind 
+                            A Relic Cradle
                           </div>
                       </div>
               <div className="py-3 ">
-                    <div className="font-bold">2nd Place: Kunxi H., age 11</div>
+                    <div className="font-bold">2nd Place: Chole, age 10</div>
                           <div className="underline text-blue-601 hover:text-blue-400">
-                            Dear Diary
+                            The Forest's Deforestation
                           </div>
                       </div>
 
               <div className="py-3">
-                    <div className="font-bold">3rd Place:  Luna Z., age 8</div>
+                    <div className="font-bold">3rd Place:  Kabir, age 12</div>
                           <div className="underline text-blue-601 hover:text-blue-400">
-                            The Unbreakable Himalayan Heart
+                            Vengeance of the Cacti
                           </div>
                     </div>
             
