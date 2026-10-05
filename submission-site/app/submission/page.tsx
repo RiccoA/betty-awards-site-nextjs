@@ -55,7 +55,7 @@ export default function SubmissionPage() {
 
   return (
     <main className="container w-full pt-10 px-4 mx-auto mb-10 md:max-w-3xl">
-      <h1 className="text-4xl mb-3">Story Submission for Fall 2026</h1>
+      <h1 className="text-4xl mb-3">Story Submission for Winter 2026</h1>
 
       {!isFormEnabled && (
         <div className="p-4 bg-gray-100 border border-gray-300 text-gray-700">
