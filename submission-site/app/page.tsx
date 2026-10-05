@@ -23,10 +23,10 @@ export default function HomePage() {
                     </p>
 
           <p className="mt-2 mb-2 text-white">
-            Enter now for the Fall 2026 contest!
+            Enter now for the Winter 2026 contest!
           </p>
           <p className="mt-2 mb-2 text-white">
-            The deadline is October 1, 2026.
+            The deadline is January 2, 2026.
           </p>
 
           <div className="flex justify-center mt-8">
